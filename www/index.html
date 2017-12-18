@@ -1,0 +1,437 @@
+<html>
+  <head>
+    <!--  -->
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#1c476f">
+    <!-- Your app title -->
+    <title>kNotes</title>
+    <!-- Path to Framework7 Library CSS, Material Theme -->
+    <link rel="stylesheet" href="lib/framework7/css/framework7.material.min.css">
+    <!-- Path to Framework7 color related styles, Material Theme -->
+    <link rel="stylesheet" href="lib/framework7/css/framework7.material.colors.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome CDN -->
+    <script src="https://use.fontawesome.com/b6936379c6.js"></script>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="lib/fontaweasome/css/font-awesome.min.css">
+  </head>
+  <body>
+
+
+<!-- SIDE PANEL GO HERE -->
+    <!-- Side panel -->
+    <div class="panel-overlay"></div>
+
+    <!-- Left panel, let it be with reveal effect -->
+    <div class="panel panel-left panel-reveal">
+      <div class="content-block">
+        <div class="list-block">
+          <div class="list-group">
+            <ul>
+              <li class="accordion-item">
+                  <a href="" class="item-link item-content">
+                      <div class="item-inner">
+                          <div class="item-title"><i class="fa fa-tags" aria-hidden="true"></i> Eiquetas</div>
+                      </div>
+                  </a>
+                  <div class="accordion-item-content">
+                    <div id="containertags">
+
+                    </div>
+                  </div>
+              </li>
+              <li class="item-content" style="margin-top:20px;">
+                <div class="item-inner">
+                  <div class="item-title"><a href="#" id="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar sesion</a></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- SIDE PANEL FINISH HERE -->
+
+    <!-- Views -->
+
+
+
+    <div class="views">
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main">
+        <!-- Pages container, because we use fixed navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through">
+          <!-- Page, "data-page" contains page name -->
+
+<!-- ALL PAGES GO HERE -->
+          <div data-page="index" class="page navbar-fixed">
+            <div class="navbar">
+              <div class="navbar-inner" data-page="index">
+                <div class="left">
+                  <a href="#" data-panel="left" id="openmenu" class="open-panel wnavicon"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                </div>
+                <div class="center">
+                  kNotes
+                </div>
+                <div class="right">
+
+                </div>
+              </div>
+            </div>
+            <!-- floating button -->
+            <div class="speed-dial">
+            <!-- FAB inside will open Speed Dial actions -->
+              <a href="#" class="floating-button">
+              <!-- First icon is visible when Speed Dial actions are closed -->
+                <i class="icon icon-plus"></i>
+              <!-- Second icon is visible when Speed Dial actions are opened -->
+                <i class="icon icon-close"></i>
+              </a>
+            <!-- Speed Dial Actions -->
+              <div class="speed-dial-buttons">
+              <!-- First Speed Dial button -->
+                <a href="#" id="addtag"><i class="fa fa-tags" aria-hidden="true"></i></a>
+                <a href="#newnote"><i class="fa fa-sticky-note" aria-hidden="true"></i></a>
+
+              </div>
+            </div>
+            <!-- Scrollable page content main page -->
+            <div class="page-content">
+
+              <div class="content-block-title">Mis Notas</div>
+                <div class="list-block media-list">
+                  <ul id="containernotas">
+
+
+
+                  </ul>
+                </div>
+
+            </div>
+          </div>
+
+
+
+<!-- New Note page -->
+          <div class="page navbar-fixed cached" data-page="newnote">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left">
+                  <a href="#index" class="back wnavicon"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                </div>
+                <div class="center">
+                  Nueva Nota
+                </div>
+                <div class="right">
+
+                </div>
+              </div>
+            </div>
+
+            <div class="page-content">
+
+              <div class="content-block-title">
+                <i class="fa fa-file-text" aria-hidden="true"></i> Nueva nota
+              </div>
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-content-inner">
+
+                    <div class="list-block">
+                      <ul>
+                        <li>
+                          <div class="item-content">
+
+                            <div class="item-inner">
+                              <div class="item-title floating-label">Titulo</div>
+                              <div class="item-input">
+                                  <input type="text" class="bordener" id="ntitle" name="title">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="content-block-title">Contenido</div>
+                       <div class="content-block">
+                         <div class="content-block-inner">
+                            <textarea id="ncont" class="bordener" style="height:30%"></textarea>
+                        </div>
+                       </div>
+
+                       <ul>
+                         <li id="selectags"><a href="#" id="notetags" class="item-link smart-select" data-page-title="Etiquetas" data-back-on-select="true" data-back-text="Hecho">
+                             <!-- "multiple" attribute for multiple select-->
+                             <select id="tagopts" name="Etiquetas">
+                               <!-- options grouped within "optgroup" tag-->
+
+
+                             </select>
+
+                             <div class="item-content">
+                               <div class="item-inner">
+                                <div class="item-title">Etiquetas</div>
+                               </div>
+                             </div>
+                           </a>
+                         </li>
+                         <li class="buttons-row">
+                           <div class="item-content">
+                             <div class="item-inner">
+                               <a href="#" id="newnota" class="button button-fill color-blue">Listo</a>
+                               <a href="#index" class="button button-fill color-red">Cancelar</a>
+                             </div>
+                           </div>
+                         </li>
+                       </ul>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+<!-- Update Note Page -->
+
+          <div class="page navbar-fixed cached" data-page="updatenote">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left">
+                  <a href="#index" class="back wnavicon"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                </div>
+                <div class="center">
+                  Editar Nota
+                </div>
+                <div class="right">
+
+                </div>
+              </div>
+            </div>
+
+            <div class="page-content">
+
+              <div class="content-block-title">
+                <i class="fa fa-file-text" aria-hidden="true"></i> Editar nota
+              </div>
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-content-inner">
+
+                    <div class="list-block">
+                      <ul>
+                        <li>
+                          <div class="item-content">
+
+                            <div class="item-inner">
+                              <div class="item-title floating-label">Titulo</div>
+                              <div class="item-input">
+                                  <input type="text" class="bordener" id="nntitle" name="title">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="content-block-title">Contenido</div>
+                       <div class="content-block">
+                         <div class="content-block-inner">
+                            <textarea id="nncont" class="bordener" style="height:30%"></textarea>
+                        </div>
+                       </div>
+
+                       <ul>
+                         <li id="sselectags"><a href="#" id="nnotetags" class="item-link smart-select" data-page-title="Etiquetas" data-back-on-select="true" data-back-text="Hecho">
+                             <!-- "multiple" attribute for multiple select-->
+                             <select id="ttagopts" name="Etiquetas">
+                               <!-- options grouped within "optgroup" tag-->
+
+
+                             </select>
+
+                             <div class="item-content">
+                               <div class="item-inner">
+                                <div class="item-title">Etiquetas</div>
+                               </div>
+                             </div>
+                           </a>
+                         </li>
+                         <li class="buttons-row">
+                           <div class="item-content">
+                             <div class="item-inner">
+                               <a href="#" id="updatenota" class="button button-fill color-blue">Listo</a>
+                               <a href="#index" class="button button-fill color-red">Cancelar</a>
+                             </div>
+                           </div>
+                         </li>
+                       </ul>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+<!-- View Note Page -->
+
+          <div class="page navbar-fixed cached" data-page="viewnote">
+
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left">
+                  <a href="#index" id="bcvnote" class="back wnavicon"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                </div>
+                <div class="center">
+                  Nota
+                </div>
+                <div class="right">
+
+                </div>
+              </div>
+            </div>
+
+            <div class="page-content">
+
+              <div class="card">
+                <div class="card-header" id="vtitle">
+
+                </div>
+                <div class="card-content">
+                  <div class="card-content-inner" id="vcont">
+
+                  </div>
+                </div>
+                <div class="card-footer" id="vtag">
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+<!-- PAGES FINISH HERE -->
+
+
+
+<!-- ALL POPUPS GO HERE -->
+<!-- popuplogin -->
+          <div class="popup popup-login">
+            <div class="content-block vcenterstuff">
+              <div class="centerstuff">
+                <img src="/android_asset/www/img/Notas.png" class="lazy" alt="" style="height:80px">
+              </div>
+              <form>
+                <div class="list-block">
+                  <ul>
+                    <li class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title label">Correo</div>
+                        <div class="item-input">
+                          <input type="email" name="username" id="usrmail" placeholder="Tu correo">
+                        </div>
+                      </div>
+                    </li>
+                    <li class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title label">Contraseña</div>
+                        <div class="item-input">
+                          <input type="password" id="usrpass" name="password" placeholder="Tu contraseña">
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="list-block">
+                  <ul>
+                    <li style="text-align:center">
+                      <a href="#" id="loging" class="item-link list-button button">Ingresar</a>
+                    </li>
+                  </ul>
+                  <div class="list-block-label centerstuff">
+                    Si no se ha registrado ingrese <a href="#" id="tosignup" class="button link">aqui.</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+<!-- popup registro -->
+          <div class="popup popup-signup">
+            <div class="content-block">
+              <div class="centerstuff">
+                <img src="/android_asset/www/img/Notas.png" class="lazy" alt="" style="height:80px">
+              </div>
+              <form>
+                <div class="list-block" style="margin-top:10px">
+                  <ul>
+                    <li class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title label">Nombre</div>
+                        <div class="item-input">
+                          <input type="text" name="username" id="jusrnm" placeholder="Tu nombre">
+                        </div>
+                      </div>
+                    </li>
+                    <li class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title label">Apellido</div>
+                        <div class="item-input">
+                          <input type="text" name="userscndname" id="jusrap" placeholder="Tu apellido">
+                        </div>
+                      </div>
+                    </li>
+                    <li class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title label">Correo</div>
+                        <div class="item-input">
+                          <input type="text" name="username" id="jusrmail" placeholder="example@example.com">
+                        </div>
+                      </div>
+                    </li>
+                    <li class="item-content">
+                      <div class="item-inner">
+                        <div class="item-title label">Contraseña</div>
+                        <div class="item-input">
+                          <input type="password" name="password" id="jusrpass" placeholder="Tu contraseña">
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="list-block">
+                  <ul>
+                    <li><a href="#" id="signupbtn" class="item-link list-button button">Registrarse</a></li>
+                  </ul>
+                  <div class="list-block-label centerstuff">
+                    <p> Si ya se registro oprima<a href="#" id="tosignin" class="button"> aqui.</a></p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+<!-- POPUPS FINISH HERE -->
+
+
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+  </body>
+</html>
